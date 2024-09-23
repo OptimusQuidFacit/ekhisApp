@@ -1,4 +1,4 @@
-export const efon=[
+export const efon= [
 "Basic Health Centre Alanaka",
 "Basic Health Centre Araromi",
 "Basic Health Centre Igboolofin",

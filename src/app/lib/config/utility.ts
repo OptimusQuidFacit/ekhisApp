@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { ado } from "../data/ado"
+import { efon } from "../data/efon";
 import { ekitiEast } from "../data/ekitiEast";
 import { ekitiSouthWest } from "../data/ekitiSouthWest";
 import { ekitiWest } from "../data/ekitiWest";
@@ -33,8 +34,8 @@ export const findFacilitiies=(lga:string)=>{
         case "Ise/Orun":
         return iseOrun;
         break;
-        case "Ise/Orun":
-        return iseOrun;
+        case "Efon":
+        return efon;
         break;
         case "Gbonyin":
         return gbonyin;
