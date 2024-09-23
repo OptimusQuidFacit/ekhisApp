@@ -1,0 +1,18 @@
+export const LGAs=[
+    "Ado",
+    "Ikere",
+    "Ijero",
+    "Oye",
+    "Ise/Orun",
+    "Gbonyin",
+    "Ilejemeje",
+    "Ido-Osi",
+    "Ekiti South West",
+    "Ekiti West",
+    "Ekiti East",
+    "Efon",
+    "Irepodun/Ifelodun",
+    "Emure",
+    "Moba",
+    "Ikole",
+]

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,9 +23,19 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.home-background{
+  background: rgb(58,106,113);
+  background: linear-gradient(90deg, rgba(58,106,113,1) 29%, rgba(28,186,211,1) 74%);
+  height: 100vh;
+}
+.component-home-background{
+  background: rgb(58,106,113);
+  background: linear-gradient(90deg, rgba(58,106,113,1) 29%, rgba(28,186,211,1) 74%);
+}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
