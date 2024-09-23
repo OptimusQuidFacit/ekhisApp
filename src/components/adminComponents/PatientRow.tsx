@@ -43,7 +43,7 @@ const PatientRow = (props:props) => {
                 {props.facility}
             </div>
             <div className="flex-[0.2] text-center">
-                {props.adminRange===2?props.jul:props.jun}
+                {props.adminRange===2?props.jul:props.jan}
             </div>
             <div className="flex-[0.2] text-center">
                 {props.adminRange===2?props.aug:props.feb}

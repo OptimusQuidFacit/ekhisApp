@@ -8,8 +8,8 @@ import PatientRow from "./PatientRow";
 import { useEffect, useState } from "react";
 import { useAdminContext, usePatientContext } from "@/customHooks";
 import { adminContextType, patientContextType } from "@/ContextProvider";
-
 import MonthHeaders from "./MonthHeaders";
+
 
 export type queryType={
     facility?:string,
