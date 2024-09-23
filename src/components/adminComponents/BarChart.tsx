@@ -38,8 +38,8 @@ const BarChart = ({lgaCount}:props) => {
     //     }
     // }
     return (
-        <div className="w-full h-full">
-            <Bar data={dataPaid}/>    
+        <div className="w-full h-full flex items-center justify-center">
+            <Bar data={dataPaid}/>   
         </div>
     );
 }

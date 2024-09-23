@@ -8,10 +8,11 @@ import { adminContextType, patientContextType } from "@/ContextProvider";
 import { monthlyTotals } from "@/app/lib/config/utility";
 import { LGAs } from "@/app/lib/data/lga";
 import { queryType } from "./AdminDataPage";
+import Loader from "../Loader";
 
 const Charts = () => {
     const [patients, setPatients] = useState<any>(null)
-    // const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const { adminYear}= useAdminContext() as adminContextType
     // const {LGA, facility}= usePatientContext() as patientContextType
     // console.log(adminRange)
@@ -56,6 +57,7 @@ const Charts = () => {
             .then(res=>setPatients(res))
              fetchLgas().then(res=>{setLgaValues(res)
                 res&&setLgaCount(res.map((value:any)=>value.length))
+                setLoading(false);
              });
             
           }, [])
@@ -71,8 +73,16 @@ const Charts = () => {
           lgaCount&&console.log(lgaCount);
     return (
         <>
-            <div className="flex-1 h-full p-3 bg-white rounded-xl">
-                <BarChart lgaCount={lgaCount as number[]}/>
+            <div className="flex-1 h-full  p-3 bg-white rounded-xl">
+                {loading?
+                <div className="h-full flex items-center justify-center">
+                    <Loader/>
+                </div>
+                    :
+                    <div className="h-full flex items-center justify-center">
+                        <BarChart lgaCount={lgaCount as number[]}/>
+                    </div>
+                        }
             </div>
             <div className="flex-1 h-full p-3 bg-white rounded-xl">
 
