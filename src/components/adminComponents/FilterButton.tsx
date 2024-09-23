@@ -1,6 +1,5 @@
-//@ts-nocheck
 "use client"
-import { ComponentProps, HTMLAttributes, useEffect, useState } from "react";
+import {  HTMLAttributes, useEffect, useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import Chooseboxes from "../Chooseboxes";

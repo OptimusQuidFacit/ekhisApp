@@ -8,7 +8,7 @@ import { getPatients, getPatientsWithQuery } from "../lib/data/patients";
 import AdminDataPage from "@/components/adminComponents/AdminDataPage";
 
 const page = async () => {
-    const date=new Date();
+    // const date=new Date();
     let facility=null
     let LGA= null,
     adminYear=2024
@@ -32,7 +32,7 @@ const page = async () => {
             return patients;
         }
     }
-    let patients=await fetchPatients();
+    // let patients=await fetchPatients();
     return (
         <div className="h-full w-full">
             <AdminDataPage/>

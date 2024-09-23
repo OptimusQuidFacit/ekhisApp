@@ -1,7 +1,7 @@
 "use client"
 import { patientContextType } from "@/ContextProvider";
 import { usePatientContext } from "@/customHooks";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 type props={
@@ -14,6 +14,16 @@ const Choose = ({options, title}:props) => {
     const [value, setValue] = useState<string>('')
     const formRef= useRef<HTMLInputElement>(null);
     // console.log(value);
+
+    useEffect(() => {
+      
+    
+      return () => {
+        setFacility(null);
+        setLGA(null);
+      }
+    }, [])
+    
     const chooseValue=(text:string|null)=>{
         if (title==='Facility'){
             setFacility(text)

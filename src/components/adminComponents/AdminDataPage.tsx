@@ -1,6 +1,6 @@
-//@ts-nocheck
+
 "use client"
-import { domain } from "@/app/lib/data/patients";
+import { domain, formattedPatients } from "@/app/lib/data/patients";
 // import { fetchPatients } from "@/app/lib/data/patients";
 import DateFilter from "./DateFilter";
 import FilterButton from "./FilterButton";
@@ -11,16 +11,21 @@ import { adminContextType, patientContextType } from "@/ContextProvider";
 
 import MonthHeaders from "./MonthHeaders";
 
+export type queryType={
+    facility?:string,
+    LGA?:string
+}
 const AdminDataPage = () => {
-    const [patients, setPatients] = useState<any>(null)
+    const [patients, setPatients] = useState<formattedPatients[]|null>(null)
     const [loading, setLoading] = useState(true)
     const {adminRange, adminYear}= useAdminContext() as adminContextType
     const {LGA, facility}= usePatientContext() as patientContextType
     // console.log(adminRange)
     // const router= useRouter()
+  
     const fetchPatients= async ()=>{
             // await getPatients(date.getFullYear());
-            const query:any={}
+            const query:queryType={}
             if(facility){
                 query.facility=facility;
             }
@@ -52,11 +57,11 @@ const AdminDataPage = () => {
     
     return (
         <>
-        {loading?
+        {loading ? 
         <div className="w-full h-full flex justify-center items-center">
             <div className="border-white h-[25px] w-[25px] animate-spin rounded-full border-[5px] border-t-[#3A6A71]" />
         </div>:
-        <>
+        <div className=" pt-5 h-full">
           <div className="mt-5 flex items-center justify-between">
                 <div className="flex-1">
                     <FilterButton className="text-start"/>
@@ -68,18 +73,15 @@ const AdminDataPage = () => {
                     <DateFilter/>
                 </div>
             </div>
-            <div className=" w-full overflow-scroll">
-                <div className="mt-3 w-full bg-white rounded-xl min-w-[1500px]">
+            <>
+                <div className="mt-5 h-4/5 w-full bg-white rounded-xl min-w-[1100px] overflow-hidden">
                         <header className="py-3 px-3 rounded-t-xl bg-primary text-white">
                             <div className="flex">
-                                <div className="flex-[0.2]">
+                                <div className="flex-[0.2] font-semibold">
                                     S/N
-                                    <div>
-                                        ({patients?.length})
-                                    </div>
                                 </div>
-                                <div className="flex-[2]">
-                                    Name
+                                <div className="flex-[1.5]">
+                                   Name
                                 </div>
                                 <div className="flex-1">
                                     NIN
@@ -90,15 +92,15 @@ const AdminDataPage = () => {
                                 <div className="flex-[0.5]">
                                     LGA
                                 </div>
-                                <div className="flex-1">
+                                <div className="flex-1 me-[10px]">
                                     Facility
                                 </div>
                                 <>
-                                 <MonthHeaders patients={patients} adminRange={adminRange} />
+                                 <MonthHeaders patients={patients as formattedPatients[]} adminRange={adminRange} />
                                 </>
                             </div>
                         </header>
-                        <section className="py-3 px-3">
+                        <section className="py-3 px-3 overflow-y-scroll h-[90%]">
                             {patients?.map((item:any, index:number)=>
                                 <PatientRow key={index}
                                 index={index}
@@ -124,8 +126,8 @@ const AdminDataPage = () => {
                             )}
                         </section>  
                 </div>
-            </div>  
-        </>}
+            </>  
+        </div>}
         </>
     );
 }

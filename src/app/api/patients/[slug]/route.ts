@@ -2,9 +2,12 @@
 import { getPatients, getPatientsWithQuery } from "@/app/lib/data/patients";
 
 // import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET= async (request:any, {params}:{params:any})=>{
+type Params={
+    slug: string
+}
+export const GET= async (request:NextRequest, {params}:{params:Params})=>{
     try{
         const {slug}=params;
         const year= parseInt(slug as string);

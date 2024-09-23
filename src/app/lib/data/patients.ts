@@ -1,5 +1,6 @@
 // import { useAdminContext, usePatientContext } from "@/customHooks";
 //@ts-nocheck
+import { queryType } from "@/components/adminComponents/AdminDataPage";
 import { connectToDb } from "../config/dbconnection";
 import { formatVisits } from "../config/utility";
 import Patients, { patientType } from "../models/patients"
@@ -7,6 +8,26 @@ import { adminContextType, patientContextType } from "@/ContextProvider";
 import { RootFilterQuery } from "mongoose";
 
 type getPatientsFn=() => Promise<any[] | undefined>|string
+export type formattedPatients={
+    name: string,
+    NIN: number;
+    DOB: string;
+    phoneNumber: number;
+    LGA: string;
+    facility: string;
+    january: number;
+    febuary: number;
+    march: number;
+    april: number;
+    may: number;
+    june: number;
+    july: number;
+    august: number;
+    september: number;
+    october: number;
+    november: number;
+    december: number;
+}
 export const domain="http://localhost:3000"
 export const getPatients =async(year:number)=>{
     try{
@@ -27,7 +48,7 @@ export const getPatients =async(year:number)=>{
         return err.message
     }
 }
-export const getPatientsWithQuery =async(query:RootFilterQuery<any>, year:number)=>{
+export const getPatientsWithQuery =async(query:RootFilterQuery<queryType>, year:number)=>{
     try{
         connectToDb();
         let patients= await Patients.find(query).lean<patientType[]>();

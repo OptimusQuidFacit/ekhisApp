@@ -1,5 +1,4 @@
 "use client"
-
 import { adminContextType, patientContextType } from "@/ContextProvider";
 import { useAdminContext, usePatientContext } from "@/customHooks";
 const DateFilter = () => {

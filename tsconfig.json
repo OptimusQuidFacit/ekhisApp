@@ -12,12 +12,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-
-        "noImplicitAny": false,
-        "suppressImplicitAnyIndexErrors": true,
-        "ignoreDeprecations": "5.0",
-        "checkJs": false,
-        "noEmitOnError": false,
    
     
     "plugins": [

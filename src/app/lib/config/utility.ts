@@ -14,6 +14,7 @@ import { irepodunIfelodun } from "../data/irepodunIfelodun";
 import { iseOrun } from "../data/iseOrun";
 import { moba } from "../data/moba";
 import { oye } from "../data/oye";
+import { formattedPatients } from "../data/patients";
 
 export const findFacilitiies=(lga:string)=>{
     // let facilitities=[
@@ -98,7 +99,7 @@ export const formatVisits=(visits:visitObject[], year:number)=>{
     }
     return returnObject;
 }
-export const monthlyTotals=(patients:Object[])=>{
+export const monthlyTotals=(patients:formattedPatients[])=>{
     let returnObject={
         january: patients?.reduce((acc:number, patient:any)=>acc+patient.january, 0),
         febuary: patients?.reduce((acc:number, patient:any)=>acc+patient.febuary, 0),

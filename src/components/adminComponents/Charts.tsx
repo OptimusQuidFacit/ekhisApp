@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 "use client"
 import { domain } from "@/app/lib/data/patients";
 import BarChart from "./BarChart";
@@ -7,17 +7,18 @@ import { useAdminContext, usePatientContext } from "@/customHooks";
 import { adminContextType, patientContextType } from "@/ContextProvider";
 import { monthlyTotals } from "@/app/lib/config/utility";
 import { LGAs } from "@/app/lib/data/lga";
+import { queryType } from "./AdminDataPage";
 
 const Charts = () => {
     const [patients, setPatients] = useState<any>(null)
     // const [loading, setLoading] = useState(true)
-    // const {adminRange, adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
-    const {LGA, facility}= usePatientContext() as patientContextType
+    const { adminYear}= useAdminContext() as adminContextType
+    // const {LGA, facility}= usePatientContext() as patientContextType
     // console.log(adminRange)
     // const router= useRouter()
     const fetchPatients= async (lgaParams?:string)=>{
             // await getPatients(date.getFullYear());
-            let query:any={}
+            let query:queryType={}
             // if(facility){
             //     query.facility=facility;
             // }
@@ -46,7 +47,7 @@ const Charts = () => {
         const [monthNames, setMonthNames] = useState<string[]>()
         const [monthValues, setMonthValues] = useState<number[]>()
         const [lgaCount, setLgaCount] = useState<number[]>()
-
+        console.log(lgaValues, monthNames, monthValues)
         // const initialize=()=>{
         //     setLgaValues(fetchLgas() as Promise<any[]>)
         // }

@@ -11,7 +11,7 @@ const patientSchema = new mongoose.Schema({
     phoneNumber:{ type: Number},
     LGA:{ type: String, required:true},
     facility:{ type: String, required:true},
-    visits:{ type: [{time: String, day: Number, month: Number, year: Number}]},
+    visits:{ type: [{time: String, day: Number, month: Number, year: Number}], required:true},
 }, {timestamps: true});
 
 // {time: String, day: Number, month: Number, year: Number}

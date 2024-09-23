@@ -23,11 +23,11 @@ type props={
 const PatientRow = (props:props) => {
     console.log("row componeent", props.adminRange)
     return (
-        <div className="flex my-3">
+        <div className="flex my-3 w-full">
             <div className="flex-[0.2] font-semibold">
                 {props.index+1}
             </div>
-            <div className="flex-[2]">
+            <div className="flex-[1.5]">
                 {props.name}
             </div>
             <div className="flex-1">
@@ -42,23 +42,23 @@ const PatientRow = (props:props) => {
             <div className="flex-1 me-[10px]">
                 {props.facility}
             </div>
-            <div className="flex-[0.2]">
-                {props.jul}
+            <div className="flex-[0.2] text-center">
+                {props.adminRange===2?props.jul:props.jun}
             </div>
-            <div className="flex-[0.2]">
-                {props.aug}
+            <div className="flex-[0.2] text-center">
+                {props.adminRange===2?props.aug:props.feb}
             </div>
-            <div className="flex-[0.2]">
+            <div className="flex-[0.2] text-center">
                 {props.adminRange===2?props.sep:props.mar}
             </div>
-            <div className="flex-[0.2]">
-                {props.oct}
+            <div className="flex-[0.2] text-center">
+                {props.adminRange===2?props.oct:props.apr}
             </div>
-            <div className="flex-[0.2]">
-                {props.nov}
+            <div className="flex-[0.2] text-center">
+                {props.adminRange===2?props.nov:props.may}
             </div>
-            <div className="flex-[0.2]">
-                {props.dec}
+            <div className="flex-[0.2] text-center">
+                {props.adminRange===2?props.dec:props.jun}
             </div>
         </div>
     );

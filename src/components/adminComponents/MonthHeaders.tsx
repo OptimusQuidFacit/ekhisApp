@@ -1,5 +1,6 @@
-//@ts-nocheck
-const MonthHeaders = ({patients, adminRange}:{patients:any, adminRange:number}) => {
+import { formattedPatients } from "@/app/lib/data/patients";
+
+const MonthHeaders = ({patients, adminRange}:{patients:formattedPatients[], adminRange:number}) => {
     return (
         <>
           {

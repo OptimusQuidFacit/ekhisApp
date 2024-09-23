@@ -1,7 +1,7 @@
 "use client"
 import { submitForm } from "@/app/lib/controllers/patientActions";
-import { useActionState, useEffect, useRef, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useRef, useState } from "react";
+import { useFormState} from "react-dom";
 import Button from "./Button";
 import { usePatientContext } from "@/customHooks";
 import { patientContextType } from "@/ContextProvider";
@@ -9,17 +9,30 @@ import FormMessage from "./FormMessage";
 
 const PatientForm = () => {
     const [state, formAction]= useFormState(submitForm, null)
-    // const { pending } = useFormStatus();
-    const {facility,  LGA, setFacility, setLGA}= usePatientContext() as patientContextType;
-    const formRef= useRef<HTMLFormElement>(null);
-    const date= new Date();
-    const timeArr=[date.getHours(), date.getMinutes(), date.getSeconds()]
-    let patientVisit = {
-        time:`${timeArr[0]}:${timeArr[1]}:${timeArr[2]}`,
-        day: date.getDate(), 
-        month: date.getMonth()+1,
-        year: date.getFullYear()
+    const [day, setDay] = useState<number>();
+    const [month, setMonth] = useState<number>();
+    const [year, setYear] = useState<number>();
+    const handleVisit=(e: React.ChangeEvent<HTMLInputElement>)=>{
+        console.log(e.target.value.split("-"));
+        let date=e.target.value.split("-")
+        setYear(parseInt(date[0]))
+        setMonth(parseInt(date[1]))
+        setDay(parseInt(date[2]))
     }
+    // const { pending } = useFormStatus();
+    const {facility,  LGA}= usePatientContext() as patientContextType;
+    const formRef= useRef<HTMLFormElement>(null);
+    
+    // Info for realtime values
+    
+    // const date= new Date();
+    // const timeArr=[date.getHours(), date.getMinutes(), date.getSeconds()]
+    // let patientVisit = {
+    //     time:`${timeArr[0]}:${timeArr[1]}:${timeArr[2]}`,
+    //     day: date.getDate(), 
+    //     month: date.getMonth()+1,
+    //     year: date.getFullYear()
+    // }
     // console.log(date.getHours(), date.getMinutes(), date.getSeconds())
 
     useEffect(() => {
@@ -54,15 +67,32 @@ const PatientForm = () => {
                 <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Phone Number" type="number" name="phoneNumber" id="phoneNumber" />
                 </div>
                 <div>
+                <label className="block text-primary" htmlFor="DOB">
+                    (Date of birth)
+                </label>
                 <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Birth" type="date" name="DOB" id="DOB" />
+                </div>
+                <div>
+                <label  className="block text-primary" htmlFor="DOV">
+                    (Date of visit)
+                </label>
+                <input onChange={handleVisit} className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Visit" type="date" name="DOV" id="DOV" />
                 </div>
                 <input  value={LGA as string} type="hidden" name="LGA" id="LGA" />
                 <input value={facility as string} type="hidden" name="facility" id="Facility" />
-                <>
+                
+                {/* For real time submission */}
+                {/* <>
                 <input value={patientVisit.day} type="hidden" name="day" id="day" />
                 <input value={patientVisit.month} type="hidden" name="month" id="month" />
                 <input value={patientVisit.year} type="hidden" name="year" id="year" />
                 <input value={patientVisit.time} type="hidden" name="time" id="year"/>
+                </> */}
+                <>
+                <input value={day} type="hidden" name="day" id="day" />
+                <input value={month} type="hidden" name="month" id="month" />
+                <input value={year} type="hidden" name="year" id="year" />
+                {/* <input value={patientVisit.time} type="hidden" name="time" id="year"/> */}
                 </>
             </div>
             <div className="mx-auto text-center mt-4 md:mt-10">
