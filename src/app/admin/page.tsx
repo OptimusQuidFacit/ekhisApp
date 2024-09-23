@@ -1,10 +1,10 @@
-import PatientRow from "@/components/adminComponents/PatientRow";
-import { dummyPatients } from "../lib/data/dummydata";
+// import PatientRow from "@/components/adminComponents/PatientRow";
+// import { dummyPatients } from "../lib/data/dummydata";
 import { getPatients, getPatientsWithQuery } from "../lib/data/patients";
-import { patientType } from "../lib/models/patients";
-import { FaFilter } from "react-icons/fa";
-import FilterButton from "@/components/adminComponents/FilterButton";
-import DateFilter from "@/components/adminComponents/DateFilter";
+// import { patientType } from "../lib/models/patients";
+// import { FaFilter } from "react-icons/fa";
+// import FilterButton from "@/components/adminComponents/FilterButton";
+// import DateFilter from "@/components/adminComponents/DateFilter";
 import AdminDataPage from "@/components/adminComponents/AdminDataPage";
 
 const page = async () => {

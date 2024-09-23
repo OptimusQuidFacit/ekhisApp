@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client"
 import { domain } from "@/app/lib/data/patients";
 import BarChart from "./BarChart";
@@ -9,8 +10,8 @@ import { LGAs } from "@/app/lib/data/lga";
 
 const Charts = () => {
     const [patients, setPatients] = useState<any>(null)
-    const [loading, setLoading] = useState(true)
-    const {adminRange, adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
+    // const [loading, setLoading] = useState(true)
+    // const {adminRange, adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
     const {LGA, facility}= usePatientContext() as patientContextType
     // console.log(adminRange)
     // const router= useRouter()

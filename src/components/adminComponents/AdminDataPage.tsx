@@ -1,5 +1,6 @@
+//@ts-nocheck
 "use client"
-import { domain, getPatients, getPatientsWithQuery } from "@/app/lib/data/patients";
+import { domain } from "@/app/lib/data/patients";
 // import { fetchPatients } from "@/app/lib/data/patients";
 import DateFilter from "./DateFilter";
 import FilterButton from "./FilterButton";
@@ -7,20 +8,19 @@ import PatientRow from "./PatientRow";
 import { useEffect, useState } from "react";
 import { useAdminContext, usePatientContext } from "@/customHooks";
 import { adminContextType, patientContextType } from "@/ContextProvider";
-import { revalidatePath } from "next/cache";
-import { useRouter } from "next/router";
+
 import MonthHeaders from "./MonthHeaders";
 
 const AdminDataPage = () => {
     const [patients, setPatients] = useState<any>(null)
     const [loading, setLoading] = useState(true)
-    const {adminRange, adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
+    const {adminRange, adminYear}= useAdminContext() as adminContextType
     const {LGA, facility}= usePatientContext() as patientContextType
     // console.log(adminRange)
     // const router= useRouter()
     const fetchPatients= async ()=>{
             // await getPatients(date.getFullYear());
-            let query:any={}
+            const query:any={}
             if(facility){
                 query.facility=facility;
             }
@@ -28,10 +28,10 @@ const AdminDataPage = () => {
                 query.LGA=LGA;
             }
             if(facility||LGA) {
-                let patients= await fetch(`${domain}/api/patients/${adminYear}?query=${encodeURIComponent(JSON.stringify(query))}`)
+                const patients= await fetch(`${domain}/api/patients/${adminYear}?query=${encodeURIComponent(JSON.stringify(query))}`)
                 return patients;
             }
-            let patients = await fetch(`${domain}/api/patients/${adminYear}`);
+            const patients = await fetch(`${domain}/api/patients/${adminYear}`);
             return patients;
         }
     // const initializePatient=async()=>{

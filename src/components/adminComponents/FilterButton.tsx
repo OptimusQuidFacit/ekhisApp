@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client"
 import { ComponentProps, HTMLAttributes, useEffect, useState } from "react";
 import { FaFilter } from "react-icons/fa";

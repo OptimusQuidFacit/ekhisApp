@@ -9,7 +9,7 @@ const Button = ({...rest}: ComponentProps<any>) => {
     //     console.log(pending)
     //   }, [pending]);
     return (
-        <button disabled={pending} className="mx-auto text-center mt-10 cursor-pointer component-home-background hover:border-4 border-secondary text-white py-3 px-5 rounded-xl" type="submit">
+        <button {...rest} disabled={pending} className="mx-auto text-center mt-10 cursor-pointer component-home-background hover:border-4 border-secondary text-white py-3 px-5 rounded-xl" type="submit">
             {pending?<Loader/>:"Submit"}
         </button>
     );

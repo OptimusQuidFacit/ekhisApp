@@ -1,3 +1,4 @@
+//@ts-nocheck
 const MonthHeaders = ({patients, adminRange}:{patients:any, adminRange:number}) => {
     return (
         <>

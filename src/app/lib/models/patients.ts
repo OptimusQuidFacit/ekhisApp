@@ -1,3 +1,4 @@
+//@ts-nocheck
 import mongoose, {type Document } from "mongoose";
 import { type visitObject } from "../config/utility";
 

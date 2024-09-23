@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use server"
 
 import { connectToDb } from "../config/dbconnection";

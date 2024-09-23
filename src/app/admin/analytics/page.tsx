@@ -1,4 +1,4 @@
-import BarChart from "@/components/adminComponents/BarChart";
+// import BarChart from "@/components/adminComponents/BarChart";
 import Charts from "@/components/adminComponents/Charts";
 import FilterButton from "@/components/adminComponents/FilterButton";
 

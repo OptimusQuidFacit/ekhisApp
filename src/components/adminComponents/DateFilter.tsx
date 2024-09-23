@@ -3,7 +3,7 @@
 import { adminContextType, patientContextType } from "@/ContextProvider";
 import { useAdminContext, usePatientContext } from "@/customHooks";
 const DateFilter = () => {
-    const date= new Date();
+    // const date= new Date();
     const {adminRange, adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
     const {LGA, facility}= usePatientContext() as patientContextType
     console.log(LGA, facility, adminRange, adminYear);

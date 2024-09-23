@@ -1,10 +1,6 @@
-import Choose from "@/components/Choose";
 import PatientForm from "@/components/PatientForm";
-import Image from "next/image";
-import { LGAs } from "./lib/data/lga";
-import { findFacilitiies } from "./lib/config/utility";
+
 import Chooseboxes from "@/components/Chooseboxes";
-import Menu from "@/components/Menu";
 
 export default function Home() {
   // console.log(LGAs.length)

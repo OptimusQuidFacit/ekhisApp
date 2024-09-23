@@ -1,4 +1,3 @@
-import Loader from "@/components/Loader";
 
 const loading = () => {
     return (

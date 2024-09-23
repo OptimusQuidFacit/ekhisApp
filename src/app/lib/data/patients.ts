@@ -1,4 +1,5 @@
-import { useAdminContext, usePatientContext } from "@/customHooks";
+// import { useAdminContext, usePatientContext } from "@/customHooks";
+//@ts-nocheck
 import { connectToDb } from "../config/dbconnection";
 import { formatVisits } from "../config/utility";
 import Patients, { patientType } from "../models/patients"

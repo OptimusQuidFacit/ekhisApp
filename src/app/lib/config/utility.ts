@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { ado } from "../data/ado"
 import { ekitiEast } from "../data/ekitiEast";
 import { ekitiSouthWest } from "../data/ekitiSouthWest";

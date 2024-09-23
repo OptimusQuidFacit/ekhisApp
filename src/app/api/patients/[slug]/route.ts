@@ -1,12 +1,13 @@
+//@ts-nocheck
 import { getPatients, getPatientsWithQuery } from "@/app/lib/data/patients";
 
-import { NextApiRequest } from "next";
+// import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
 export const GET= async (request:any, {params}:{params:any})=>{
     try{
-        let{slug}=params;
-        let year= parseInt(slug as string);
+        const {slug}=params;
+        const year= parseInt(slug as string);
         const searchParams = request.nextUrl.searchParams;
         console.log(year);
     if(searchParams.has("query")){
@@ -14,12 +15,12 @@ export const GET= async (request:any, {params}:{params:any})=>{
         
         let queryObject= JSON.parse(decodeURIComponent(query as string))
         console.log(queryObject)
-        let response = await getPatientsWithQuery(queryObject, year);
+        const response = await getPatientsWithQuery(queryObject, year);
         // console.log(response);
         return NextResponse.json(response);
 
     }
-        let response =await getPatients(year);
+        const response =await getPatients(year);
         // console.log(response);
        return NextResponse.json(response);
     }

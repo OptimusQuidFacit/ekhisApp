@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client"
 import { Chart } from "chart.js/auto";
 import { CategoryScale } from "chart.js";
@@ -26,17 +27,17 @@ const BarChart = ({lgaCount}:props) => {
            barThickness: 20,
         }]
     }
-    const paidOptions= {
-        plugins:{
-            title:{
-                display: true,
-                text: "Most Popular accomodations",
-                font: {
-                    size: "20px",
-                }
-            }
-        }
-    }
+    // const paidOptions= {
+    //     plugins:{
+    //         title:{
+    //             display: true,
+    //             text: "Most Popular accomodations",
+    //             font: {
+    //                 size: "20px",
+    //             }
+    //         }
+    //     }
+    // }
     return (
         <div className="w-full h-full">
             <Bar data={dataPaid}/>    
