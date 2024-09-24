@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react"
+import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
 
 export type patientContextType= {
     LGA: string|null,
@@ -26,6 +26,11 @@ export const ContextProvider = ({children}: {children:ReactNode}) => {
     const date= new Date();
     const [adminRange, setAdminRange] = useState(1)
     const [adminYear, setAdminYear] = useState<number>(date.getFullYear());
+
+    useEffect(() => {
+        localStorage.setItem('theme', "light");
+        document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
+      }, []);
     return (
        <patientContext.Provider value={{LGA, facility, setFacility, setLGA}}>
             <adminContext.Provider value={{adminRange, adminYear, setAdminYear, setAdminRange}}>
