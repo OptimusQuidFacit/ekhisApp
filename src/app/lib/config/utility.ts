@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import { ado } from "../data/ado"
 import { efon } from "../data/efon";
 import { ekitiEast } from "../data/ekitiEast";
