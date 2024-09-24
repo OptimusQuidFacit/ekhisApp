@@ -27,10 +27,12 @@ export const ContextProvider = ({children}: {children:ReactNode}) => {
     const [adminRange, setAdminRange] = useState(1)
     const [adminYear, setAdminYear] = useState<number>(date.getFullYear());
 
-    useEffect(() => {
-        localStorage.setItem('theme', "light");
-        document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
-      }, []);
+    // useEffect(() => {
+    //     let theme = localStorage.getItem('theme');
+    //     console.log("This is the theme:", theme);
+    //     document.documentElement.classList.add("light");
+    //     document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
+    //   }, []);
     return (
        <patientContext.Provider value={{LGA, facility, setFacility, setLGA}}>
             <adminContext.Provider value={{adminRange, adminYear, setAdminYear, setAdminRange}}>

@@ -21,7 +21,7 @@ type props={
     dec?:number,
 }
 const PatientRow = (props:props) => {
-    console.log("row componeent", props.adminRange)
+    // console.log("row componeent", props.adminRange)
     return (
         <div className="flex my-3 w-full">
             <div className="flex-[0.2] font-semibold">

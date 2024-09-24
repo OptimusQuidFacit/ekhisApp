@@ -8,6 +8,15 @@ import { patientContextType } from "@/ContextProvider";
 import FormMessage from "./FormMessage";
 
 const PatientForm = () => {
+
+    useEffect(() => {
+        let theme = localStorage.getItem('theme');
+        console.log("This is the theme:", theme);
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
+      }, []);
+
+
     const [state, formAction]= useFormState(submitForm, null)
     const [day, setDay] = useState<number>();
     const [month, setMonth] = useState<number>();

@@ -22,7 +22,7 @@ const Menu = () => {
     ]
     const path= usePathname();
     const pathName=path.split('/')[1]
-    console.log(pathName);
+    // console.log(pathName);
     return (
         <div className="p-2 md:p-5 flex gap-4">
             {

@@ -3,9 +3,9 @@ import { adminContextType, patientContextType } from "@/ContextProvider";
 import { useAdminContext, usePatientContext } from "@/customHooks";
 const DateFilter = () => {
     // const date= new Date();
-    const {adminRange, adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
-    const {LGA, facility}= usePatientContext() as patientContextType
-    console.log(LGA, facility, adminRange, adminYear);
+    const { adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
+    // const {LGA, facility}= usePatientContext() as patientContextType
+    // console.log(LGA, facility, adminRange, adminYear);
     return (
             <div className="flex items-center gap-2 font-semibold justify-end">
                 For:

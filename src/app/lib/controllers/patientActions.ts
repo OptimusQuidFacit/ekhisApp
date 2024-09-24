@@ -1,6 +1,7 @@
 
 "use server"
 
+// import { error } from "console";
 import { connectToDb } from "../config/dbconnection";
 import Patients from "../models/patients";
 
@@ -16,6 +17,11 @@ export const submitForm = async (prevState: any, formData:any)=>{
         LGA, visits:[visit]
      }
     // let firstName= formData.get("firstName");
+    if(!day || !month || !year){
+        return {
+            error: "Date of Visit is required"
+        }
+    }
     try{
         connectToDb();
         const newPatient= new Patients(initialPatient)

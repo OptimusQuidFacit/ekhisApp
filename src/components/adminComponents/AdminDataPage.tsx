@@ -16,6 +16,14 @@ export type queryType={
     LGA?:string
 }
 const AdminDataPage = () => {
+    useEffect(() => {
+        let theme = localStorage.getItem('theme');
+        console.log("This is the theme:", theme);
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
+      }, []);
+
+      
     const [patients, setPatients] = useState<formattedPatients[]|null>(null)
     const [loading, setLoading] = useState(true)
     const {adminRange, adminYear}= useAdminContext() as adminContextType
