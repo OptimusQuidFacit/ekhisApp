@@ -75,6 +75,11 @@ export const submitForm = async (prevState: any, formData:any)=>{
             error: "Patient's Last Name is required"
             }
     }
+    if(err.message.includes("phoneNumber")){
+        return {
+            error: "Phone Number field is required"
+            }
+    }
     
     return {
             error: "Something went wrong while trying to add patient data. Please check your internet connection"

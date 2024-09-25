@@ -8,7 +8,7 @@ const patientSchema = new mongoose.Schema({
     middleName:{ type: String},
     NIN:{ type: Number, required:true, unique:true},
     DOB:{ type: String},
-    phoneNumber:{ type: Number},
+    phoneNumber:{ type: Number, required:true},
     LGA:{ type: String, required:true},
     facility:{ type: String, required:true},
     visits:{ type: [{time: String, day: Number, month: Number, year: Number}], required:true},

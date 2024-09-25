@@ -15,9 +15,7 @@ const Choose = ({options, title}:props) => {
     const formRef= useRef<HTMLInputElement>(null);
     // console.log(value);
 
-    useEffect(() => {
-      
-    
+    useEffect(() => { 
       return () => {
         setFacility(null);
         setLGA(null);

@@ -13,6 +13,10 @@ export type adminContextType={
     setAdminRange: Dispatch<SetStateAction<number>>,
     adminYear:number,
     setAdminYear: Dispatch<SetStateAction<number>>,
+    adminLGA:string|null,
+    setAdminLGA: Dispatch<SetStateAction<string | null>>,
+    adminFacility:string | null,
+    setAdminFacility: Dispatch<SetStateAction<string | null>>,
 }
 
 export const patientContext = createContext<patientContextType | undefined>(undefined);
@@ -24,6 +28,8 @@ export const ContextProvider = ({children}: {children:ReactNode}) => {
 
     //admin related global states
     const date= new Date();
+    const [adminLGA, setAdminLGA] = useState<string|null>(null)
+    const [adminFacility, setAdminFacility] = useState<string|null>(null)
     const [adminRange, setAdminRange] = useState(1)
     const [adminYear, setAdminYear] = useState<number>(date.getFullYear());
 
@@ -35,7 +41,7 @@ export const ContextProvider = ({children}: {children:ReactNode}) => {
     //   }, []);
     return (
        <patientContext.Provider value={{LGA, facility, setFacility, setLGA}}>
-            <adminContext.Provider value={{adminRange, adminYear, setAdminYear, setAdminRange}}>
+            <adminContext.Provider value={{adminFacility, adminLGA, adminRange, adminYear, setAdminYear, setAdminRange, setAdminLGA, setAdminFacility}}>
                 {children}
             </adminContext.Provider>
        </patientContext.Provider>
