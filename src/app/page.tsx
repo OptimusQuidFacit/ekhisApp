@@ -1,12 +1,16 @@
 import PatientForm from "@/components/PatientForm";
 
 import Chooseboxes from "@/components/Chooseboxes";
-
+import { revalidatePath } from "next/cache";
+// import { auth } from "./lib/auth";
 export default function Home() {
+
   // console.log(LGAs.length)
+  // console.log(domain);
+  revalidatePath('/');
   return (
     <div className="h-full flex justify-center">
-      <div className="bg-white rounded-3xl w-4/5 md:h-4/5 flex flex-col">
+      <div className="bg-white rounded-3xl md:w-4/5 md:h-4/5 flex flex-col">
         <section className="md:flex items-center p-5 md:p-10">
           <div className="w-full md:w-1/2">
             <h1 className=" text-primary mx-auto text-center md:text-start">

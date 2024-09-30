@@ -1,37 +1,35 @@
-// import PatientRow from "@/components/adminComponents/PatientRow";
-// import { dummyPatients } from "../lib/data/dummydata";
+import { auth } from "../lib/auth";
 import { getPatients, getPatientsWithQuery } from "../lib/data/patients";
-// import { patientType } from "../lib/models/patients";
-// import { FaFilter } from "react-icons/fa";
-// import FilterButton from "@/components/adminComponents/FilterButton";
-// import DateFilter from "@/components/adminComponents/DateFilter";
 import AdminDataPage from "@/components/adminComponents/AdminDataPage";
+
 
 const page = async () => {
     // const date=new Date();
+    let user= await auth();
+    console.log(user);
     let facility=null
     let LGA= null,
     adminYear=2024
-    const fetchPatients= async ()=>{
-        // await getPatients(date.getFullYear());
-        let query:any={}
-        if(facility){
-            query.facility=facility;
-        }
-        if(LGA){
-            query.LGA=LGA;
-        }
-        if(facility||LGA) {
-            let patients= await getPatientsWithQuery(query, adminYear)
-            console.log('query fn was invoked')
-            return patients;
-        }
-        else{
-            let patients = await getPatients(adminYear);
-            console.log("getAll fn was invoked")
-            return patients;
-        }
-    }
+    // const fetchPatients= async ()=>{
+    //     // await getPatients(date.getFullYear());
+    //     let query:any={}
+    //     if(facility){
+    //         query.facility=facility;
+    //     }
+    //     if(LGA){
+    //         query.LGA=LGA;
+    //     }
+    //     if(facility||LGA) {
+    //         let patients= await getPatientsWithQuery(query, adminYear)
+    //         console.log('query fn was invoked')
+    //         return patients;
+    //     }
+    //     else{
+    //         let patients = await getPatients(adminYear);
+    //         console.log("getAll fn was invoked")
+    //         return patients;
+    //     }
+    // }
     // let patients=await fetchPatients();
     return (
         <div className="h-full w-full">

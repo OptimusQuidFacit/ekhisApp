@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useAdminContext, usePatientContext } from "@/customHooks";
 import { adminContextType, patientContextType } from "@/ContextProvider";
 import MonthHeaders from "./MonthHeaders";
+import ExportToExcel from "./ExcelExport";
 
 
 export type queryType={
@@ -23,7 +24,7 @@ const AdminDataPage = () => {
         document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
       }, []);
 
-      
+
     const [patients, setPatients] = useState<formattedPatients[]|null>(null)
     const [loading, setLoading] = useState(true)
     const {adminRange, adminYear}= useAdminContext() as adminContextType
@@ -69,7 +70,7 @@ const AdminDataPage = () => {
         <div className="w-full h-full flex justify-center items-center">
             <div className="border-white h-[25px] w-[25px] animate-spin rounded-full border-[5px] border-t-[#3A6A71]" />
         </div>:
-        <div className=" pt-5 h-full">
+        <div className="pt-5 h-full">
           <div className="mt-5 flex items-center justify-between">
                 <div className="flex-1">
                     <FilterButton className="text-start"/>
@@ -108,7 +109,7 @@ const AdminDataPage = () => {
                                 </>
                             </div>
                         </header>
-                        <section className="py-3 px-3 overflow-y-scroll h-[90%]">
+                        <section className="py-3 px-3 overflow-y-scroll h-[78%]">
                             {patients?.map((item:any, index:number)=>
                                 <PatientRow key={index}
                                 index={index}
@@ -132,7 +133,10 @@ const AdminDataPage = () => {
                                 dec={item.december}
                                 />
                             )}
-                        </section>  
+                        </section> 
+                <section className="text-center mt-2">
+                    <ExportToExcel patients={patients as formattedPatients[]}/>
+                </section>
                 </div>
             </>  
         </div>}

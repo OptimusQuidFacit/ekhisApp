@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ContextProvider from "@/ContextProvider";
 import Menu from "@/components/Menu";
+import { useRouter } from "next/navigation";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,15 +26,17 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-
+} >) {
+//  console.log(params);
+// const router= useRouter()
+// console.log(router)
   return (
     <ContextProvider>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased home-background`}
           >
-            <main className="flex justify-center items-center h-screen">
+            <main className="flex justify-center items-center h-full">
               <div className="flex flex-col m-5 md:m-0 md:w-[95%] h-full">
                 <div className="self-end">
                   <Menu/>
