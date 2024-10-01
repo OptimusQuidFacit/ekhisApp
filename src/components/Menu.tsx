@@ -1,10 +1,13 @@
 "use client"
+import { sessionType } from "@/app/layout";
+// import { userType } from "@/app/lib/models/user";
+import { Session } from "next-auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaPlus } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
 
-const Menu = () => {
+const Menu = ({session}:{session:sessionType | null}) => {
     const menuItems=[
         {
             name:'Add Patient',
@@ -13,13 +16,13 @@ const Menu = () => {
 
             
         },
-        {
-            name:'Admin',
-            path:"/admin",
-            icon: <RiAdminLine/>
-            
-        },
     ]
+   session?.user.isAdmin&&menuItems.push(    {
+    name:'Admin',
+    path:"/admin",
+    icon: <RiAdminLine/>
+    
+})
     const path= usePathname();
     const pathName=path.split('/')[1]
     // console.log(pathName);

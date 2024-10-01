@@ -4,7 +4,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ContextProvider from "@/ContextProvider";
 import Menu from "@/components/Menu";
-import { useRouter } from "next/navigation";
+import { auth } from "./lib/auth";
+import { userType } from "./lib/models/user";
+import { type Session} from "next-auth";
+import { BiLogOut } from "react-icons/bi";
+import { handleLogOut } from "./lib/controllers/user";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,14 +26,16 @@ export const metadata: Metadata = {
   description: "A platform for querying and analysing medical data for Ekhis",
 };
 
-export default function RootLayout({
+export type sessionType= Omit<Session, "User">&{
+  user: userType
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 } >) {
-//  console.log(params);
-// const router= useRouter()
-// console.log(router)
+const session = await auth() as sessionType;
   return (
     <ContextProvider>
       <html lang="en">
@@ -38,8 +44,14 @@ export default function RootLayout({
           >
             <main className="flex justify-center items-center h-full">
               <div className="flex flex-col m-5 md:m-0 md:w-[95%] h-full">
-                <div className="self-end">
-                  <Menu/>
+                <div style={{alignSelf:!session ?"end":""}} className="flex items-center justify-between">
+                  {session &&
+                  <form action={handleLogOut}>
+                    <button>
+                      <BiLogOut color="#f00" size={30}/>
+                    </button>
+                  </form>}
+                  <Menu session={session}/>
                 </div>
                   {children}
               </div>

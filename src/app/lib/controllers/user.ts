@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs"
 import { connectToDb } from "../config/dbconnection";
 import { signIn, signOut } from "../auth";
 import User from "../models/user";
+import { error } from "console";
 
 export const addUser= async (prevState:any, formData:any) => {
     const { name, password, confirmPassword } = 
@@ -54,6 +55,11 @@ export const login= async(prevState:any, formData:any)=>{
         await signIn('credentials', {name, password});
     }
     catch(err:any){
+        if(err.message.includes("ECONNREFUSED")){
+            return {
+                error: "Please check your internet connection"
+            }
+        }
         if(err?.type?.includes('CredentialsSignin')){
             return{
                 error: "Invalid email or password"
@@ -62,4 +68,8 @@ export const login= async(prevState:any, formData:any)=>{
         console.log(err);
         throw err;
     }
+}
+
+export const handleLogOut = async ()=>{
+    await signOut();
 }
