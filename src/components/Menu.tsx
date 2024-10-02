@@ -32,9 +32,9 @@ const Menu = ({session}:{session:sessionType | null}) => {
                 menuItems.map(item=>
                 <Link 
                     href={item.path}>
-                    <div style={{background:`${pathName===item.path.split('/')[1]?"white":""}`,
+                    <div key={item.name} style={{background:`${pathName===item.path.split('/')[1]?"white":""}`,
                     color:`${pathName===item.path.split('/')[1]?"black":""}`}}
-                     key={item.name} className="flex gap-2 items-center hover:border-2 hover:text-[#FFB232] hover:bg-white hover:border-[#FFB232] bg-[#FFB232] text-white text-lg p-3 rounded-2xl">
+                      className="flex gap-2 items-center hover:border-2 hover:text-[#FFB232] hover:bg-white hover:border-[#FFB232] bg-[#FFB232] text-white text-lg p-3 rounded-2xl">
                         {item.icon}
                             {item.name}
                     </div>
