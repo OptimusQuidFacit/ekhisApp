@@ -48,7 +48,7 @@ const session = await auth() as sessionType;
                   {session &&
                   <form action={handleLogOut}>
                     <button>
-                      <BiLogOut color="#f00" size={30}/>
+                      <BiLogOut color="#FFB232" size={30}/>
                     </button>
                   </form>}
                   <Menu session={session}/>
