@@ -30,9 +30,9 @@ const Menu = ({session}:{session:sessionType | null}) => {
         <div className="p-2 md:p-5 flex gap-4">
             {
                 menuItems.map(item=>
-                <Link 
+                <Link key={item.name}
                     href={item.path}>
-                    <div key={item.name} style={{background:`${pathName===item.path.split('/')[1]?"white":""}`,
+                    <div style={{background:`${pathName===item.path.split('/')[1]?"white":""}`,
                     color:`${pathName===item.path.split('/')[1]?"black":""}`}}
                       className="flex gap-2 items-center hover:border-2 hover:text-[#FFB232] hover:bg-white hover:border-[#FFB232] bg-[#FFB232] text-white text-lg p-3 rounded-2xl">
                         {item.icon}
