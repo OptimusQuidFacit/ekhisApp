@@ -25,7 +25,7 @@ export const submitForm = async (prevState: any, formData:any)=>{
     try{
         connectToDb();
         const newPatient= new Patients(initialPatient);
-        let findPatient= await Patients.findOne({NIN, phoneNumber, facility, LGA});
+        let findPatient= await Patients.findOne({NIN, facility, LGA});
         if(findPatient){
             await Patients.updateOne(findPatient, {$push: {visits: visit}});
             // console.log('Patient data updated successfully');
