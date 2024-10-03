@@ -45,11 +45,14 @@ const PatientForm = () => {
     // console.log(date.getHours(), date.getMinutes(), date.getSeconds())
 
     useEffect(() => {
-        if (state?.msg && formRef.current) {
-            formRef.current.reset(); // Reset the form
+        if (state?.msg) {
+            formRef.current?.reset(); // Reset the form
+            setDay(0);
+            setMonth(0)
+            setYear(0);
             console.log('Form has been reset');
         }
-    }, [state?.msg]); // Effect triggered when state.msg changes
+    }, [state]); // Effect triggered when state.msg changes
 
     //Take out the message after three seconds
     const [msgShown, setMsgShown] = useState(true)
@@ -61,25 +64,25 @@ const PatientForm = () => {
         <form onSubmit={()=>setMsgShown(true)} ref={formRef} action={formAction} className="w-full flex flex-col items-center">
             <div className="w-4/5 h-3/5 grid md:grid-cols-2 justify-items-center items-center gap-4 md:gap-7">
                 <div>
-                <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="First Name" type="text" name="firstName" id="firstName" />
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="First Name" type="text" name="firstName" id="firstName" />
                 </div>
                 <div>
-                <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Last Name" type="text" name="lastName" id="lastName" />
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Last Name" type="text" name="lastName" id="lastName" />
                 </div>
                 <div>
-                <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Middle Name" type="text" name="middleName" id="middleName" />
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Middle Name" type="text" name="middleName" id="middleName" />
                 </div>
                 <div>
-                <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="NIN" type="number" name="NIN" id="NIN" />
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="NIN" type="number" name="NIN" id="NIN" />
                 </div>
                 <div>
-                <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Phone Number" type="number" name="phoneNumber" id="phoneNumber" />
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Phone Number" type="number" name="phoneNumber" id="phoneNumber" />
                 </div>
                 <div>
                 <label className="block text-primary" htmlFor="DOB">
                     (Date of birth)
                 </label>
-                <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Birth" type="date" name="DOB" id="DOB" />
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Birth" type="date" name="DOB" id="DOB" />
                 </div>
                 <div>
                 <label  className="block text-primary" htmlFor="DOV">
