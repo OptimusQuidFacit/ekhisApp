@@ -22,7 +22,7 @@ export const submitForm = async (prevState: any, formData:any)=>{
     //         error: "Date of Visit is required"
     //     }
     // }
-    console.log(day, month, year);
+    // console.log(day, month, year);
     try{
         connectToDb();
         if(!day || !month || !year){

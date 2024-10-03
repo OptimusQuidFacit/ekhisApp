@@ -59,7 +59,7 @@ const PatientForm = () => {
     useEffect(()=>{
        state?.msg&&setTimeout(()=>setMsgShown(false), 3000);
     }, [state]);
-    console.log(day, month, year);
+    // console.log(day, month, year);
     return (       
         <form onSubmit={()=>setMsgShown(true)} ref={formRef} action={formAction} className="w-full flex flex-col items-center">
             <div className="w-4/5 h-3/5 grid md:grid-cols-2 justify-items-center items-center gap-4 md:gap-7">
