@@ -18,9 +18,9 @@ const PatientForm = () => {
 
 
     const [state, formAction]= useFormState(submitForm, null)
-    const [day, setDay] = useState<number>();
-    const [month, setMonth] = useState<number>();
-    const [year, setYear] = useState<number>();
+    const [day, setDay] = useState<number|null>(null);
+    const [month, setMonth] = useState<number|null>(null);
+    const [year, setYear] = useState<number|null>(null);
     const handleVisit=(e: React.ChangeEvent<HTMLInputElement>)=>{
         console.log(e.target.value.split("-"));
         let date=e.target.value.split("-")
@@ -46,10 +46,10 @@ const PatientForm = () => {
 
     useEffect(() => {
         if (state?.msg) {
+            setDay(null);
+            setMonth(null);
+            setYear(null);
             formRef.current?.reset(); // Reset the form
-            setDay(0);
-            setMonth(0)
-            setYear(0);
             console.log('Form has been reset');
         }
     }, [state]); // Effect triggered when state.msg changes
@@ -57,9 +57,9 @@ const PatientForm = () => {
     //Take out the message after three seconds
     const [msgShown, setMsgShown] = useState(true)
     useEffect(()=>{
-       setTimeout(()=>setMsgShown(false), 3000);
-    }, [state?.msg]);
-    
+       state?.msg&&setTimeout(()=>setMsgShown(false), 3000);
+    }, [state]);
+    console.log(day, month, year);
     return (       
         <form onSubmit={()=>setMsgShown(true)} ref={formRef} action={formAction} className="w-full flex flex-col items-center">
             <div className="w-4/5 h-3/5 grid md:grid-cols-2 justify-items-center items-center gap-4 md:gap-7">
@@ -100,15 +100,17 @@ const PatientForm = () => {
                 <input value={patientVisit.year} type="hidden" name="year" id="year" />
                 <input value={patientVisit.time} type="hidden" name="time" id="year"/>
                 </> */}
+                { day&&
                 <>
-                <input value={day} type="hidden" name="day" id="day" />
-                <input value={month} type="hidden" name="month" id="month" />
-                <input value={year} type="hidden" name="year" id="year" />
+                    <input value={day as number} type="hidden" name="day" id="day" />
+                    <input value={month as number} type="hidden" name="month" id="month" />
+                    <input value={year as number} type="hidden" name="year" id="year" />
                 {/* <input value={patientVisit.time} type="hidden" name="time" id="year"/> */}
                 </>
+                }
             </div>
             <div className="mx-auto text-center mt-4 md:mt-10">
-                <Button />
+                <Button error={state?.error}/>
             </div>
             {   
                 msgShown && <FormMessage error={state?.error as string} msg={state?.msg as string}/>

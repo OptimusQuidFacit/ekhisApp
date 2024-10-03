@@ -17,13 +17,19 @@ export const submitForm = async (prevState: any, formData:any)=>{
         LGA, visits:[visit]
      }
     // let firstName= formData.get("firstName");
-    if(!day || !month || !year){
-        return {
-            error: "Date of Visit is required"
-        }
-    }
+    // if(!day || !month || !year){
+    //     return {
+    //         error: "Date of Visit is required"
+    //     }
+    // }
+    console.log(day, month, year);
     try{
         connectToDb();
+        if(!day || !month || !year){
+            return {
+                error: "Date of Visit is required"
+            }
+        }
         const newPatient= new Patients(initialPatient);
         let findPatient= await Patients.findOne({NIN, facility, LGA});
         if(findPatient){
