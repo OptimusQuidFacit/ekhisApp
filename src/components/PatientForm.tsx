@@ -88,7 +88,7 @@ const PatientForm = () => {
                 <label  className="block text-primary" htmlFor="DOV">
                     (Date of visit)
                 </label>
-                <input onChange={handleVisit} className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Visit" type="date" name="DOV" id="DOV" />
+                <input onInput={handleVisit} className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Visit" type="date" name="DOV" id="DOV" />
                 </div>
                 <input  value={LGA as string} type="hidden" name="LGA" id="LGA" />
                 <input value={facility as string} type="hidden" name="facility" id="Facility" />
