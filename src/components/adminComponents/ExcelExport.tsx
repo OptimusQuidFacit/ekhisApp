@@ -23,7 +23,7 @@ const ExportToExcel = ({patients}:{patients:formattedPatients[]}) => {
     const ws_data = [
       ["S/N", "Name", "NIN", "Phone Number", "LGA", "Facility", 
         "Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", 
-        "Sep", "Oct", "Nove", "Dec"], // headers
+        "Sep", "Oct", "Nov", "Dec"], // headers
      ...patientAsArray          // other rows
     ];
 

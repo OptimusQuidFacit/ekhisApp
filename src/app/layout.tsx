@@ -42,7 +42,7 @@ const session = await auth() as sessionType;
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased home-background`}
           >
-            <main className="flex justify-center items-center h-full">
+            <main className="flex justify-center items-center min-h-[850px] h-full">
               <div className="flex flex-col m-5 md:m-0 md:w-[95%] h-full">
                 <div style={{alignSelf:!session ?"end":""}} className="flex items-center justify-between">
                   {session &&
