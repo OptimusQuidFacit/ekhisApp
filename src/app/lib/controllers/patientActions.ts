@@ -16,6 +16,7 @@ export const submitForm = async (prevState: any, formData:any)=>{
         firstName, lastName, middleName, NIN, phoneNumber, DOB, facility, 
         LGA, visits:[visit]
      }
+     let patientNameAndPhone={firstName, lastName, middleName, phoneNumber}
     // let firstName= formData.get("firstName");
     // if(!day || !month || !year){
     //     return {
@@ -32,6 +33,12 @@ export const submitForm = async (prevState: any, formData:any)=>{
         }
         const newPatient= new Patients(initialPatient);
         let findPatient= await Patients.findOne({NIN, facility, LGA});
+        let findPatientNameAndPhone= await Patients.findOne(patientNameAndPhone);
+        if(findPatientNameAndPhone){
+            return {
+                error:"Name and Phone number pair already exists in the database, please use a different name or a different phone number"
+            }
+        }
         if(findPatient){
             await Patients.updateOne(findPatient, {$push: {visits: visit}});
             // console.log('Patient data updated successfully');
