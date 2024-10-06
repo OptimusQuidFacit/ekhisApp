@@ -1,8 +1,8 @@
 "use client"
 const error = () => {
     return (
-        <div>
-            Error
+        <div className="text-white text-xl">
+            Error, Please Check Internet Connection
         </div>
     );
 }

@@ -17,7 +17,7 @@ export const GET= async (request:NextRequest, {params}:{params:Params})=>{
         const query = searchParams.get("query") as string;
         
         let queryObject= JSON.parse(decodeURIComponent(query as string))
-        console.log(queryObject)
+        // console.log(queryObject)
         const response = await getPatientsWithQuery(queryObject, year);
         // console.log(response);
         return NextResponse.json(response);

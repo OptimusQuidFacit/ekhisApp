@@ -5,11 +5,16 @@ const DateFilter = () => {
     // const date= new Date();
     const { adminYear, setAdminRange, setAdminYear}= useAdminContext() as adminContextType
     // const {LGA, facility}= usePatientContext() as patientContextType
-    // console.log(LGA, facility, adminRange, adminYear);
+    // console.log( adminYear);
+    const handleYear=(e:React.ChangeEvent<HTMLInputElement>)=>{
+        let year=parseInt(e.target.value)
+        year/1000>=1&&setAdminYear(year)
+        // console.log(year/1000)
+    }
     return (
             <div className="flex items-center gap-2 font-semibold justify-end">
                 For:
-                <input onChange={(e)=>setAdminYear(parseInt(e.target.value))} className="w-[60px] rounded-xl p-2" type="text" name="year" id="year" defaultValue={adminYear} />
+                <input  onChange={handleYear} className="w-[70px] rounded-xl p-2" type="number" min="1900" name="year" id="year" defaultValue={adminYear} />
                 Between: 
                 <select onChange={(e)=>setAdminRange(parseInt(e.target.value))} className="rounded-xl p-2" name="range" id="range">
                     <option value={1}>

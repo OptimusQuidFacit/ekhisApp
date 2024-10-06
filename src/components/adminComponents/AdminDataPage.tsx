@@ -17,12 +17,12 @@ export type queryType={
     LGA?:string
 }
 const AdminDataPage = () => {
-    useEffect(() => {
-        let theme = localStorage.getItem('theme');
-        console.log("This is the theme:", theme);
-        document.documentElement.classList.add("light");
-        document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
-      }, []);
+    // useEffect(() => {
+    //     let theme = localStorage.getItem('theme');
+    //     console.log("This is the theme:", theme);
+    //     document.documentElement.classList.add("light");
+    //     document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
+    //   }, []);
 
 
     const [patients, setPatients] = useState<formattedPatients[]|null>(null)
@@ -54,22 +54,24 @@ const AdminDataPage = () => {
     //     setPatients(patients);
     // }
     useEffect(() => {
-        // setLoading(true);
-        fetchPatients().then(res=>res.json()).then(res=>{
-            setPatients(res);
-            setLoading(false);
+        setLoading(true);
+        adminYear&&fetchPatients()
+        .then((res:any)=>res.ok&&res.json())
+        .then(res=>{
+                let filteredRes=res?.filter((patient:formattedPatients)=>Object.values(patient).slice(10).some((value)=>value as number>0))
+                // console.log(filteredRes.length);
+                setPatients(filteredRes);
+                setLoading(false);
+            
         })
+        .catch(err=>{throw new Error(err)});
         // revalidatePath("/admin");
 
     }, [adminYear, LGA, facility])
     // console.log("Hello", patients);
     
     return (
-        <>
-        {loading ? 
-        <div className="w-full h-full flex justify-center items-center">
-            <div className="border-white h-[25px] w-[25px] animate-spin rounded-full border-[5px] border-t-[#3A6A71]" />
-        </div>:
+        <>      
         <div className="pt-5 h-full">
           <div className="mt-5 flex items-center justify-between">
                 <div className="flex-1">
@@ -83,6 +85,12 @@ const AdminDataPage = () => {
                 </div>
             </div>
             <>
+            {
+                loading?
+                <div className="w-full h-full flex justify-center items-center">
+                    <div className="border-white h-[25px] w-[25px] animate-spin rounded-full border-[5px] border-t-[#3A6A71]" />
+                </div>
+                :
                 <div className="mt-5 h-4/5 w-full bg-white rounded-xl min-w-[1100px] overflow-hidden">
                         <header className="py-3 px-3 rounded-t-xl bg-primary text-white">
                             <div className="flex">
@@ -110,7 +118,8 @@ const AdminDataPage = () => {
                             </div>
                         </header>
                         <section className="py-3 px-3 overflow-y-scroll h-[78%]">
-                            {patients?.map((item:any, index:number)=>
+                            {patients?.length?
+                            patients?.map((item:any, index:number)=>
                                 <PatientRow key={index}
                                 index={index}
                                 adminRange={adminRange}
@@ -132,14 +141,16 @@ const AdminDataPage = () => {
                                 nov={item.november}
                                 dec={item.december}
                                 />
-                            )}
-                        </section> 
+                            ):
+                            <p className="text-grey">Opps! No patient data for this Period</p>}
+                        </section>
                 <section className="text-center mt-2">
-                    <ExportToExcel patients={patients as formattedPatients[]}/>
+                    {patients?.length as number>0 && <ExportToExcel patients={patients as formattedPatients[]}/>}
                 </section>
                 </div>
+            }
             </>  
-        </div>}
+        </div>
         </>
     );
 }

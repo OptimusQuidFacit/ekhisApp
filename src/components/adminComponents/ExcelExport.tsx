@@ -1,9 +1,15 @@
 "use client"
 import { type formattedPatients } from '@/app/lib/data/patients';
+import { adminContextType } from '@/ContextProvider';
+import { useAdminContext } from '@/customHooks';
 import React from 'react';
 import * as XLSX from 'xlsx';
 
-const ExportToExcel = ({patients}:{patients:formattedPatients[]}) => {
+type props={
+  patients:formattedPatients[],
+}
+const ExportToExcel = ({patients}:props) => {
+  const {adminYear} = useAdminContext() as adminContextType
   const exportExcel = () => {
     //Convert each patient object to an array
     let patientAsArray=patients.map((patient, index)=> {
@@ -21,6 +27,7 @@ const ExportToExcel = ({patients}:{patients:formattedPatients[]}) => {
     // Step 1: Create a new workbook and add a sheet
     const wb = XLSX.utils.book_new();
     const ws_data = [
+      [`Patient Data for ${adminYear}`],
       ["S/N", "Name", "NIN", "Phone Number", "LGA", "Facility", 
         "Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", 
         "Sep", "Oct", "Nov", "Dec"], // headers
