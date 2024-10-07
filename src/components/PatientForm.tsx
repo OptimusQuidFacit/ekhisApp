@@ -79,6 +79,9 @@ const PatientForm = () => {
                     <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Phone Number" type="number" name="phoneNumber" id="phoneNumber" />
                 </div>
                 <div>
+                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Diagnosis" type="text" name="diagnosis" id="Diagnosis" />
+                </div>
+                <div>
                 <label className="block text-primary" htmlFor="DOB">
                     (Date of birth)
                 </label>
@@ -90,6 +93,7 @@ const PatientForm = () => {
                 </label>
                 <input onInput={handleVisit} className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Visit" type="date" name="DOV" id="DOV" />
                 </div>
+                
                 <input  value={LGA as string} type="hidden" name="LGA" id="LGA" />
                 <input value={facility as string} type="hidden" name="facility" id="Facility" />
                 

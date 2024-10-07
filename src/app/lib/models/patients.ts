@@ -9,9 +9,10 @@ const patientSchema = new mongoose.Schema({
     NIN:{ type: Number, required:true, unique:true},
     DOB:{ type: String},
     phoneNumber:{ type: Number, required:true},
+    diagnosis:{ type: String},
     LGA:{ type: String, required:true},
     facility:{ type: String, required:true},
-    visits:{ type: [{time: String, day: Number, month: Number, year: Number}], required:true},
+    visits:{ type: [{diagnosis: String, time: String, day: Number, month: Number, year: Number}], required:true},
 }, {timestamps: true});
 
 // {time: String, day: Number, month: Number, year: Number}
