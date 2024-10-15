@@ -1,5 +1,5 @@
 "use client"
-import { type formattedPatients } from '@/app/lib/data/patients';
+import { diagnosisType, type formattedPatients } from '@/app/lib/data/patients';
 import { adminContextType } from '@/ContextProvider';
 import { useAdminContext } from '@/customHooks';
 import React from 'react';
@@ -12,23 +12,37 @@ const ExportToExcel = ({patients}:props) => {
   const {adminYear} = useAdminContext() as adminContextType
   const exportExcel = () => {
     //Convert each patient object to an array
-    let patientAsArray=patients.map((patient, index)=> {
+    let patientAsArray = patients.map((patient, index)=> {
        let {name, NIN, phoneNumber, LGA, facility, january ,
         febuary, march, april, may, june, july, august, september, october,
-        november, december
+        november, december, diagnosis
        } = patient
-        let result= Object.values({index:index+1, name, NIN, phoneNumber, LGA, facility, january ,
+      //  if(diagnosis)
+       let patientDiagnosis = diagnosis?.map(item=>`${item.name?item.name:"null"} on ${item.date}`)
+       let diagnosisData = "";
+       if(patientDiagnosis){
+          for (let value of patientDiagnosis){
+              let index = patientDiagnosis.indexOf(value)
+              if(index>0){
+                diagnosisData= diagnosisData + ", " + value
+              }
+              else{
+                diagnosisData = diagnosisData + value
+              }
+          }
+       }
+       let result = Object.values({index:index+1, name, NIN, phoneNumber, LGA, facility, diagnosis: diagnosisData as string, january ,
             febuary, march, april, may, june, july, august, september, october,
             november, december
            });
-           return result;
+        return result;
     });
 
     // Step 1: Create a new workbook and add a sheet
     const wb = XLSX.utils.book_new();
     const ws_data = [
       [`Patient Data for ${adminYear}`],
-      ["S/N", "Name", "NIN", "Phone Number", "LGA", "Facility", 
+      ["S/N", "Name", "NIN", "Phone Number", "LGA", "Facility", "Diagnosis",
         "Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", 
         "Sep", "Oct", "Nov", "Dec"], // headers
      ...patientAsArray          // other rows

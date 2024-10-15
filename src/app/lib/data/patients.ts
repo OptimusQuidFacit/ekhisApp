@@ -8,6 +8,10 @@ import { adminContextType, patientContextType } from "@/ContextProvider";
 import { RootFilterQuery } from "mongoose";
 
 type getPatientsFn=() => Promise<any[] | undefined>|string
+export type diagnosisType={
+    name:string,
+    date:string
+}
 export type formattedPatients={
     name: string,
     NIN: number;
@@ -27,6 +31,7 @@ export type formattedPatients={
     october: number;
     november: number;
     december: number;
+    diagnosis?: diagnosisType[]
 }
 // export const domain= "http://localhost:3001";
 export const domain="https://ekhis-app.vercel.app"
@@ -39,7 +44,8 @@ export const getPatients =async(year:number)=>{
             let{firstName, lastName, middleName, ...rest}= other;
             let name=`${firstName} ${middleName} ${lastName}`
             let formattedVisits= formatVisits(visits, year)
-            return {name, ...rest, ...formattedVisits}
+            let diagnosis=visits.map(visit=>({ name:visit.diagnosis, date:`${visit.day}/${visit.month}/${visit.year}`}))
+            return {name, ...rest, ...formattedVisits, diagnosis}
         }
         )
         return formattedPatients;

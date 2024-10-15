@@ -1,3 +1,6 @@
+"use client"
+import { diagnosisType } from "@/app/lib/data/patients";
+import { useState } from "react";
 
 type props={
     adminRange:number
@@ -19,15 +22,30 @@ type props={
     oct?:number,
     nov?:number,
     dec?:number,
+    diagnosis:diagnosisType[]
 }
 const PatientRow = (props:props) => {
+    const [showDiagnosis, setShowDiagnosis] = useState(false)
     // console.log("row componeent", props.adminRange)
     return (
-        <div className="flex my-3 w-full">
+        <div className=" flex my-3 w-full relative overflow-visible">
+            {showDiagnosis&&
+                <div className="z-50 absolute top-[50%] left-2 bg-primary text-white rounded-xl p-3">
+                    {
+                        props.diagnosis.map((item, index)=>
+                            <div className="flex gap-2 my-1 font-semibold" key={index}>
+                                <p className="">{index+1}. </p>
+                                <p>{item.name}</p>
+                                <p>{item.date}</p>
+                            </div>
+                        )
+                    }
+                </div>
+            }
             <div className="flex-[0.2] font-semibold">
                 {props.index+1}
             </div>
-            <div className="flex-[1.5]">
+            <div onClick={()=>setShowDiagnosis(prev=>!prev)} className="flex-[1.5] cursor-pointer">
                 {props.name}
             </div>
             <div className="flex-1">

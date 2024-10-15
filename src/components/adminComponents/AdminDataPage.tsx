@@ -117,10 +117,11 @@ const AdminDataPage = () => {
                                 </>
                             </div>
                         </header>
-                        <section className="py-3 px-3 overflow-y-scroll h-[78%]">
+                        <section className="z-10 py-3 px-3 overflow-y-scroll h-[78%] ">
                             {patients?.length?
                             patients?.map((item:any, index:number)=>
                                 <PatientRow key={index}
+                                diagnosis={item.diagnosis}
                                 index={index}
                                 adminRange={adminRange}
                                 name={item.name}
