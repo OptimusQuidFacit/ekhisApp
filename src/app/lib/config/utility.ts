@@ -77,6 +77,7 @@ export const findFacilitiies=(lga:string)=>{
     }
 }
 export type visitObject = {
+    diagnosis:string,
     time:String,
     day:number,
     month: number,

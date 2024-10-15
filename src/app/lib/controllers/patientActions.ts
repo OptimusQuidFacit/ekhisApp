@@ -7,13 +7,14 @@ import Patients from "../models/patients";
 
 export const submitForm = async (prevState: any, formData:any)=>{
     const {firstName, lastName, middleName, NIN, phoneNumber, DOB, facility, 
-            LGA, day, month, year, time, diagnosis
+            LGA, day, month, year, DOBday, DOBmonth, DOByear, time, diagnosis
      }= Object.fromEntries(formData)
      let visit= {
-        time, day, month, year
+        diagnosis, time, day, month, year
      }
-     let initialPatient={
-        firstName, lastName, middleName, NIN, phoneNumber, diagnosis, DOB, facility, 
+     let dob= `${DOBday}/${DOBmonth}/${DOByear}`
+     let initialPatient= {
+        firstName, lastName, middleName, NIN, phoneNumber, DOB:dob, facility, 
         LGA, visits:[visit]
      }
      let patientNameAndPhone={firstName, lastName, middleName, phoneNumber}

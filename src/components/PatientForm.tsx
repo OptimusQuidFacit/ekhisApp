@@ -21,6 +21,10 @@ const PatientForm = () => {
     const [day, setDay] = useState<number|null>(null);
     const [month, setMonth] = useState<number|null>(null);
     const [year, setYear] = useState<number|null>(null);
+    //DOB values
+    const [DOBday, setDOBDay] = useState<number|null>(null);
+    const [DOBmonth, setDOBMonth] = useState<number|null>(null);
+    const [DOByear, DOBsetYear] = useState<number|null>(null);
     const handleVisit=(e: React.ChangeEvent<HTMLInputElement>)=>{
         console.log(e.target.value.split("-"));
         let date=e.target.value.split("-")
@@ -85,13 +89,26 @@ const PatientForm = () => {
                 <label className="block text-primary" htmlFor="DOB">
                     (Date of birth)
                 </label>
-                    <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Birth" type="date" name="DOB" id="DOB" />
+                   <div className="mt-2 flex gap-2 justify-center items-center">
+                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="dd" type="number" name="DOBday" id="DOBday" />
+                        -
+                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="mm" type="number" name="DOBmonth" id="DOBmonth" />
+                        -
+                        <input className="p-2 rounded-xl h-[50px] w-[80px]" placeholder="yyyy" type="number" name="DOByear" id="DOByear" />
+                    </div>
+                    {/* <input className="p-5 rounded-xl h-[60px] w-[200px]" placeholder="Date of Birth" type="date" name="DOB" id="DOB" /> */}
                 </div>
                 <div>
                 <label  className="block text-primary" htmlFor="DOV">
                     (Date of visit)
                 </label>
-                <input onInput={handleVisit} className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="Date of Visit" type="date" name="DOV" id="DOV" />
+                    <div className="mt-2 flex gap-2 justify-center items-center">
+                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="dd" type="number" name="day" id="day" />
+                        -
+                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="mm" type="number" name="month" id="month" />
+                        -
+                        <input className="p-2 rounded-xl h-[50px] w-[80px]" placeholder="yyyy" type="number" name="year" id="year" />
+                    </div>
                 </div>
                 
                 <input  value={LGA as string} type="hidden" name="LGA" id="LGA" />

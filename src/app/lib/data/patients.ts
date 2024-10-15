@@ -28,7 +28,7 @@ export type formattedPatients={
     november: number;
     december: number;
 }
-// export const domain= "http://localhost:3000";
+// export const domain= "http://localhost:3001";
 export const domain="https://ekhis-app.vercel.app"
 export const getPatients =async(year:number)=>{
     try{
