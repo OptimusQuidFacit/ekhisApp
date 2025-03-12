@@ -19,14 +19,14 @@ const FilterButton = ({...rest}: HTMLAttributes<HTMLDivElement>) => {
         setFacility(null);
         setLGA(null);
     }
-    const handleClose=()=>{
+    const handleToggle=()=>{
         clearForm()      
         setShow((prev:any)=>!prev);
     }
     return (
-        <div {...rest} className="flex gap-3 items-center">
+        <div className="flex text-sm gap-3 justify-center lg:justify-start items-center">
             {show&&<Chooseboxes/>}
-            <div onClick={handleClose} className="cursor-pointer flex gap-2 items-center p-3 bg-[#FFB232] rounded-xl text-white">
+            <div onClick={handleToggle} className="cursor-pointer flex gap-2 items-center p-3 bg-[#FFB232] rounded-xl text-white">
                 <p className="font-semibold w-auto">
                     {show?<IoClose/>:"Toggle Filter"}
                 </p>

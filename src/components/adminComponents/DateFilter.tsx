@@ -12,7 +12,7 @@ const DateFilter = () => {
         // console.log(year/1000)
     }
     return (
-            <div className="flex items-center gap-2 font-semibold justify-end">
+            <div className="flex items-center gap-2 font-semibold justify-center text-sm lg:justify-end">
                 For:
                 <input  onChange={handleYear} className="w-[70px] rounded-xl p-2" type="number" min="1900" name="year" id="year" defaultValue={adminYear} />
                 Between: 

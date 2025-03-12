@@ -81,7 +81,7 @@ const ExportToExcel = ({patients}:props) => {
 
   return (
     <div>
-      <button className='text-white py-2 px-3 bg-[#FFB232] rounded-lg' onClick={exportExcel}>Download Excel</button>
+      <button className='text-white text-sm py-2 px-3 bg-[#FFB232] rounded-lg' onClick={exportExcel}>Download Excel</button>
     </div>
   );
 };

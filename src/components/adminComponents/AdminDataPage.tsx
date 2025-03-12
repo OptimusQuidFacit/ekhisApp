@@ -72,12 +72,12 @@ const AdminDataPage = () => {
     
     return (
         <>      
-        <div className="pt-5 h-full">
-          <div className="mt-5 flex items-center justify-between">
+        <div className="pt-5 h-full w-full">
+          <div className="mt-5 lg:flex items-center justify-between">
                 <div className="flex-1">
-                    <FilterButton className="text-start"/>
+                    <FilterButton/>
                 </div>
-                <h1 className="flex-1 text-center text-xl font-semibold justify-self-center">
+                <h1 className="flex-1 my-5 lg:my-0 text-center text-md lg:text-lg  font-semibold">
                     Patient Data
                 </h1>
                 <div className="flex-1">
@@ -87,12 +87,14 @@ const AdminDataPage = () => {
             <>
             {
                 loading?
-                <div className="w-full h-full flex justify-center items-center">
+                <div className="w-full flex justify-center items-center">
                     <div className="border-white h-[25px] w-[25px] animate-spin rounded-full border-[5px] border-t-[#3A6A71]" />
                 </div>
                 :
-                <div className="mt-5 h-4/5 w-full bg-white rounded-xl min-w-[1100px] overflow-hidden">
-                        <header className="py-3 px-3 rounded-t-xl bg-primary text-white">
+                <div className="h-[85vh] md:max-h-[90%] mx-auto max-w-[85vw] overflow-x-scroll overflow-y-hidden">
+
+                <div className="mt-5 h-full min-w-[900px] bg-white rounded-xl ">
+                        <header className="text-sm py-3 px-3 rounded-t-xl bg-primary text-white">
                             <div className="flex">
                                 <div className="flex-[0.2] font-semibold">
                                     S/N
@@ -117,7 +119,7 @@ const AdminDataPage = () => {
                                 </>
                             </div>
                         </header>
-                        <section className="z-10 py-3 px-3 overflow-y-scroll h-[78%] ">
+                        <section className="z-10 py-3 px-3 overflow-y-scroll h-[80%]">
                             {patients?.length?
                             patients?.map((item:any, index:number)=>
                                 <PatientRow key={index}
@@ -145,11 +147,12 @@ const AdminDataPage = () => {
                             ):
                             <p className="text-grey">Opps! No patient data for this Period</p>}
                         </section>
-                <section className="text-center mt-2">
-                    {patients?.length as number>0 && <ExportToExcel patients={patients as formattedPatients[]}/>}
-                </section>
+                </div>
                 </div>
             }
+                <section className="w-full text-center mt-2">
+                    {patients?.length as number>0 && <ExportToExcel patients={patients as formattedPatients[]}/>}
+                </section>
             </>  
         </div>
         </>

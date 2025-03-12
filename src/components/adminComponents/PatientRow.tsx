@@ -28,7 +28,7 @@ const PatientRow = (props:props) => {
     const [showDiagnosis, setShowDiagnosis] = useState(false)
     // console.log("row componeent", props.adminRange)
     return (
-        <div className=" flex my-3 w-full relative overflow-visible">
+        <div className="text-sm flex my-3 w-full relative overflow-visible">
             {showDiagnosis&&
                 <div className="z-50 absolute top-[50%] left-2 bg-primary text-white rounded-xl p-3">
                     {
