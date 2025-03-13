@@ -66,7 +66,7 @@ const PatientForm = () => {
     // console.log(day, month, year);
     return (       
         <form onSubmit={()=>setMsgShown(true)} ref={formRef} action={formAction} className="w-full flex flex-col items-center">
-            <div className="w-4/5 h-3/5 grid md:grid-cols-2 justify-items-center items-center gap-4 md:gap-7">
+            <div className="w-4/5 h-3/5 grid md:grid-cols-2 justify-items-center items-center gap-4 md:gap-7 text-sm">
                 <div>
                     <input className="p-5 rounded-xl h-[50px] w-[200px]" placeholder="First Name" type="text" name="firstName" id="firstName" />
                 </div>
@@ -90,11 +90,11 @@ const PatientForm = () => {
                     (Date of birth)
                 </label>
                    <div className="mt-2 flex gap-2 justify-center items-center">
-                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="dd" type="number" name="DOBday" id="DOBday" />
+                        <input className="p-2 rounded-md h-[30px] w-[50px]" placeholder="dd" type="number" name="DOBday" id="DOBday" />
                         -
-                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="mm" type="number" name="DOBmonth" id="DOBmonth" />
+                        <input className="p-2 rounded-md h-[30px] w-[50px]" placeholder="mm" type="number" name="DOBmonth" id="DOBmonth" />
                         -
-                        <input className="p-2 rounded-xl h-[50px] w-[80px]" placeholder="yyyy" type="number" name="DOByear" id="DOByear" />
+                        <input className="p-2 rounded-md h-[30px] w-[60px]" placeholder="yyyy" type="number" name="DOByear" id="DOByear" />
                     </div>
                     {/* <input className="p-5 rounded-xl h-[60px] w-[200px]" placeholder="Date of Birth" type="date" name="DOB" id="DOB" /> */}
                 </div>
@@ -103,11 +103,11 @@ const PatientForm = () => {
                     (Date of visit)
                 </label>
                     <div className="mt-2 flex gap-2 justify-center items-center">
-                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="dd" type="number" name="day" id="day" />
+                        <input className="p-1 rounded-md h-[30px] w-[50px]" placeholder="dd" type="number" name="day" id="day" />
                         -
-                        <input className="p-2 rounded-xl h-[50px] w-[60px]" placeholder="mm" type="number" name="month" id="month" />
+                        <input className="p-1 rounded-md h-[30px] w-[50px]" placeholder="mm" type="number" name="month" id="month" />
                         -
-                        <input className="p-2 rounded-xl h-[50px] w-[80px]" placeholder="yyyy" type="number" name="year" id="year" />
+                        <input className="p-1 rounded-md h-[30px] w-[60px]" placeholder="yyyy" type="number" name="year" id="year" />
                     </div>
                 </div>
                 

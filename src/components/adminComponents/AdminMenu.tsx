@@ -22,12 +22,12 @@ const AdminMenu = () => {
     ]
     return (
         <div className="flex justify-center">
-            <div className=" flex justify-center align-items bg-[#FFB232] rounded-lg">
+            <div className="text-sm flex justify-center align-items bg-[#FFB232] rounded-lg">
                 {
                    menuItems.map((item, index)=>
                         <Link style={{background:`${pathName===item.path?"white":""}`,
                                         color:`${pathName===item.path?"black":""}`}}
-                        href={item.path} key={index} className="flex items-center gap-2 flex-1 py-2 p-3 rounded-lg text-white">
+                            href={item.path} key={index} className="flex items-center gap-2 flex-1 py-2 p-3 rounded-lg text-white">
                             <div>
                                 {item.icon}
                             </div>

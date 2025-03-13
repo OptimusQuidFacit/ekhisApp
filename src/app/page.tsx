@@ -17,16 +17,16 @@ export default function Home() {
               <div>
                Welcome!
               </div>
-              <div className="text-primary font-bold text-3xl">
+              <div className="text-primary font-bold text-xl md:text-3xl">
                 Start Patient Information
               </div>
             </h1>
           </div>
-          <div className="justify-center items-center md:w-1/2 md:border-l-4 pt-5 md:p-3">
+          <div className="justify-center items-center md:w-2/3 md:border-l-4 pt-5 md:p-3">
             <h2 className="font-bold text-xl text-primary hidden md:block">
               Tell Us More...
             </h2>
-            <div className="flex items-center justify-center pt-5 gap-3">   
+            <div className="md:overflow-hidden w-full flex items-center justify-center pt-3 lg:pt-5 gap-2">   
                 <Chooseboxes/>           
             </div>
           </div>
