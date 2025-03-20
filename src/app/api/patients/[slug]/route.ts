@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { getPatients, getPatientsWithQuery } from "@/app/lib/data/patients";
+import { getPatients, getPatientsWithQuery } from "@/lib/data/patients";
 
 // import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";

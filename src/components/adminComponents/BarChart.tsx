@@ -3,7 +3,7 @@ import { Chart } from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { Bar } from "react-chartjs-2";
 // import {  places } from "@/lib/data";
-import { LGAs } from "@/app/lib/data/lga";
+import { LGAs } from "@/lib/data/lga";
 
 const randomColor=()=>{
     const r=Math.floor(Math.random()*256);
@@ -20,7 +20,7 @@ const BarChart = ({lgaCount}:props) => {
     const dataPaid={
         labels: LGAs,
         datasets: [{
-           label: "No of Patients attended to",
+           label: "No of Patient visits",
            data: lgaCount,
            backgroundColor: lgaCount?.map((i)=> randomColor()),
            barThickness: 20,

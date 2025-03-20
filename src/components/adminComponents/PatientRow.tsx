@@ -1,6 +1,7 @@
 "use client"
-import { diagnosisType } from "@/app/lib/data/patients";
+import { diagnosisType } from "@/lib/data/patients";
 import { useState } from "react";
+import PopUp from "../shad/PopUp";
 
 type props={
     adminRange:number
@@ -25,11 +26,10 @@ type props={
     diagnosis:diagnosisType[]
 }
 const PatientRow = (props:props) => {
-    const [showDiagnosis, setShowDiagnosis] = useState(false)
-    // console.log("row componeent", props.adminRange)
+    // const [showDiagnosis, setShowDiagnosis] = useState(false)
     return (
-        <div className="text-sm flex my-3 w-full relative overflow-visible">
-            {showDiagnosis&&
+        <div className="text-sm flex my-2 w-full relative overflow-visible">
+            {/* {showDiagnosis&&
                 <div className="z-50 absolute top-[50%] left-2 bg-primary text-white rounded-xl p-3">
                     {
                         props.diagnosis.map((item, index)=>
@@ -41,12 +41,14 @@ const PatientRow = (props:props) => {
                         )
                     }
                 </div>
-            }
+            } */}
             <div className="flex-[0.2] font-semibold">
                 {props.index+1}
             </div>
-            <div onClick={()=>setShowDiagnosis(prev=>!prev)} className="flex-[1.5] cursor-pointer">
-                {props.name}
+            <div className="flex-[1.5] cursor-pointer">
+                {/* {props.name} */}
+                <PopUp name={props.name} diagnosis={props.diagnosis}/>
+
             </div>
             <div className="flex-1">
                 {props.NIN}

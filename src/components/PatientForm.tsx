@@ -1,5 +1,5 @@
 "use client"
-import { submitForm } from "@/app/lib/controllers/patientActions";
+import { submitForm } from "@/lib/controllers/patientActions";
 import { useEffect, useRef, useState } from "react";
 import { useFormState} from "react-dom";
 import Button from "./Button";
@@ -8,13 +8,6 @@ import { patientContextType } from "@/ContextProvider";
 import FormMessage from "./FormMessage";
 
 const PatientForm = () => {
-
-    useEffect(() => {
-        let theme = localStorage.getItem('theme');
-        console.log("This is the theme:", theme);
-        document.documentElement.classList.add("light");
-        document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
-      }, []);
 
 
     const [state, formAction]= useFormState(submitForm, null)

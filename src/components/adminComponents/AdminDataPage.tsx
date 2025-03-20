@@ -1,6 +1,6 @@
 
 "use client"
-import { domain, formattedPatients } from "@/app/lib/data/patients";
+import { domain, formattedPatients } from "@/lib/data/patients";
 // import { fetchPatients } from "@/app/lib/data/patients";
 import DateFilter from "./DateFilter";
 import FilterButton from "./FilterButton";
@@ -13,6 +13,7 @@ import ExportToExcel from "./ExcelExport";
 
 
 export type queryType={
+    raw?:boolean
     facility?:string,
     LGA?:string
 }
@@ -24,7 +25,7 @@ const AdminDataPage = () => {
     //     document.documentElement.classList.remove('dark'); // Ensure dark mode is not active
     //   }, []);
 
-
+    const [totalVisits, setTotalVisits] = useState<number>()
     const [patients, setPatients] = useState<formattedPatients[]|null>(null)
     const [loading, setLoading] = useState(true)
     const {adminRange, adminYear}= useAdminContext() as adminContextType
@@ -32,16 +33,19 @@ const AdminDataPage = () => {
     // console.log(adminRange)
     // const router= useRouter()
   
-    const fetchPatients= async ()=>{
+    const fetchPatients= async (raw?: boolean)=>{
             // await getPatients(date.getFullYear());
-            const query:queryType={}
+            const query:queryType={
+                
+            }
+            if(raw)query.raw=true
             if(facility){
                 query.facility=facility;
             }
             if(LGA){
                 query.LGA=LGA;
             }
-            if(facility||LGA) {
+            if(facility||LGA||raw) {
                 const patients= await fetch(`${domain}/api/patients/${adminYear}?query=${encodeURIComponent(JSON.stringify(query))}`)
                 return patients;
             }
@@ -61,10 +65,13 @@ const AdminDataPage = () => {
                 let filteredRes=res?.filter((patient:formattedPatients)=>Object.values(patient).slice(10).some((value)=>value as number>0))
                 // console.log(filteredRes.length);
                 setPatients(filteredRes);
-                setLoading(false);
-            
+                fetchPatients(true).then(res=>res.json())
+                .then(res=> {setTotalVisits(res.reduce((acc:number, patient:any)=>acc+patient.visits?.length,0))
+                setLoading(false)}
+                )
         })
         .catch(err=>{throw new Error(err)});
+        
         // revalidatePath("/admin");
 
     }, [adminYear, LGA, facility])
@@ -84,6 +91,16 @@ const AdminDataPage = () => {
                     <DateFilter/>
                 </div>
             </div>
+            {/* Number info */}
+            <div className="mt-2">
+                <p className="text-sm">
+                    Total no of patients: {patients?.length}
+                </p>
+                <p className="text-sm">
+                    Total no of patient visits: {totalVisits}
+                </p>
+            </div>
+
             <>
             {
                 loading?
@@ -96,7 +113,7 @@ const AdminDataPage = () => {
                 <div className="mt-5 h-full min-w-[900px] bg-white rounded-xl ">
                         <header className="text-sm py-3 px-3 rounded-t-xl bg-primary text-white">
                             <div className="flex">
-                                <div className="flex-[0.2] font-semibold">
+                                <div className="flex-[0.3] font-semibold">
                                     S/N
                                 </div>
                                 <div className="flex-[1.5]">

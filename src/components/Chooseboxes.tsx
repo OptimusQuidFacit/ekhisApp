@@ -1,9 +1,9 @@
 "use client"
-import { LGAs } from "@/app/lib/data/lga";
+import { LGAs } from "@/lib/data/lga";
 import Choose from "./Choose";
 import { usePatientContext } from "@/customHooks";
 import { patientContextType } from "@/ContextProvider";
-import { findFacilitiies } from "@/app/lib/config/utility";
+import { findFacilitiies } from "@/lib/config/utility";
 
 const Chooseboxes = () => {
     const {LGA}= usePatientContext() as patientContextType;

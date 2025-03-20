@@ -2,8 +2,8 @@
 
 import { patientContextType } from "@/ContextProvider";
 import { usePatientContext } from "@/customHooks";
-import { findFacilitiies } from "@/app/lib/config/utility";
-import { LGAs } from "@/app/lib/data/lga";
+import { findFacilitiies } from "@/lib/config/utility";
+import { LGAs } from "@/lib/data/lga";
 import Choose from "./Choose";
 
 

@@ -83,21 +83,20 @@ export type visitObject = {
     month: number,
     year:number
 }
-export const formatVisits=(visits:visitObject[], year:number)=>{
-    let visitsForTheYear=visits.filter(entry=>entry.year===year);
+export const formatVisits=(visits:visitObject[])=>{
     let returnObject={
-        january: visitsForTheYear.filter(visit=>visit.month===1).length,
-        febuary: visitsForTheYear.filter(visit=>visit.month===2).length,
-        march: visitsForTheYear.filter(visit=>visit.month===3).length,
-        april: visitsForTheYear.filter(visit=>visit.month===4).length,
-        may: visitsForTheYear.filter(visit=>visit.month===5).length,
-        june: visitsForTheYear.filter(visit=>visit.month===6).length,
-        july: visitsForTheYear.filter(visit=>visit.month===7).length,
-        august: visitsForTheYear.filter(visit=>visit.month===8).length,
-        september: visitsForTheYear.filter(visit=>visit.month===9).length,
-        october: visitsForTheYear.filter(visit=>visit.month===10).length,
-        november: visitsForTheYear.filter(visit=>visit.month===11).length,
-        december: visitsForTheYear.filter(visit=>visit.month===12).length,
+        january: visits.filter(visit=>visit.month===1).length,
+        febuary: visits.filter(visit=>visit.month===2).length,
+        march: visits.filter(visit=>visit.month===3).length,
+        april: visits.filter(visit=>visit.month===4).length,
+        may: visits.filter(visit=>visit.month===5).length,
+        june: visits.filter(visit=>visit.month===6).length,
+        july: visits.filter(visit=>visit.month===7).length,
+        august: visits.filter(visit=>visit.month===8).length,
+        september: visits.filter(visit=>visit.month===9).length,
+        october: visits.filter(visit=>visit.month===10).length,
+        november: visits.filter(visit=>visit.month===11).length,
+        december: visits.filter(visit=>visit.month===12).length,
     }
     return returnObject;
 }

@@ -1,5 +1,5 @@
 "use client"
-import { diagnosisType, type formattedPatients } from '@/app/lib/data/patients';
+import { diagnosisType, type formattedPatients } from '@/lib/data/patients';
 import { adminContextType } from '@/ContextProvider';
 import { useAdminContext } from '@/customHooks';
 import React from 'react';

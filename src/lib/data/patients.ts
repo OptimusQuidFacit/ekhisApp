@@ -35,10 +35,12 @@ export type formattedPatients={
 }
 export const domain= "http://localhost:3000";
 // export const domain="https://ekhis-app.vercel.app"
+
+// Fetches patient data in format of monthly count when was is set to false
 export const getPatients =async(year:number)=>{
     try{
         connectToDb();
-        let patients= await Patients.find({}).lean<patientType[]>();
+        let patients= await Patients.find({"visits.year":year}).lean<patientType[]>();
         let formattedPatients= patients.map(patient=>{
             let {visits, ...other}= patient
             let{firstName, lastName, middleName, ...rest}= other;
@@ -57,16 +59,19 @@ export const getPatients =async(year:number)=>{
 }
 export const getPatientsWithQuery =async(query:RootFilterQuery<queryType>, year:number)=>{
     try{
+        let {raw, ...relevantQuery}= query 
         connectToDb();
-        let patients= await Patients.find(query).lean<patientType[]>();
+        let patients= await Patients.find({"visits.year":year, ...relevantQuery}).lean<patientType[]>();
         let formattedPatients= patients.map(patient=>{
             let {visits, ...other}= patient
             let{firstName, lastName, middleName, ...rest}= other;
             let name=`${firstName} ${middleName} ${lastName}`
-            let formattedVisits= formatVisits(visits, year)
-            return {name, ...rest, ...formattedVisits}
+            let formattedVisits= formatVisits(visits)
+            let diagnosis=visits.map(visit=>({ name:visit.diagnosis, date:`${visit.day}/${visit.month}/${visit.year}`}))
+            return {name, ...rest, ...formattedVisits, diagnosis}
         }
         )
+        if(query.raw) return patients;
         return formattedPatients;
     }
     catch(err:any){

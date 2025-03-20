@@ -1,15 +1,15 @@
-import { auth } from "../lib/auth";
-import { getPatients, getPatientsWithQuery } from "../lib/data/patients";
+import { auth } from "../../lib/auth";
+import { getPatients, getPatientsWithQuery } from "../../lib/data/patients";
 import AdminDataPage from "@/components/adminComponents/AdminDataPage";
 
 
 const page = async () => {
     // const date=new Date();
-    let user= await auth();
-    console.log(user);
-    let facility=null
-    let LGA= null,
-    adminYear=2024
+    // let user= await auth();
+    // console.log(user);
+    // let facility=null
+    // let LGA= null,
+    // adminYear=2024
     // const fetchPatients= async ()=>{
     //     // await getPatients(date.getFullYear());
     //     let query:any={}

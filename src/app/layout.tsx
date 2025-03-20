@@ -4,11 +4,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ContextProvider from "@/ContextProvider";
 import Menu from "@/components/Menu";
-import { auth } from "./lib/auth";
-import { userType } from "./lib/models/user";
+import { auth } from "../lib/auth";
+import { userType } from "../lib/models/user";
 import { type Session} from "next-auth";
 import { BiLogOut } from "react-icons/bi";
-import { handleLogOut } from "./lib/controllers/user";
+import { handleLogOut } from "@/lib/controllers/user";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

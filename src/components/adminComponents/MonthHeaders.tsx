@@ -1,4 +1,4 @@
-import { formattedPatients } from "@/app/lib/data/patients";
+import { formattedPatients } from "@/lib/data/patients";
 
 const MonthHeaders = ({patients, adminRange}:{patients:formattedPatients[], adminRange:number}) => {
     return (
